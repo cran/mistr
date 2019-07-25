@@ -121,10 +121,10 @@ compdist.dist <- function(..., weights, breakpoints, break.spec, all.left = FALS
   if (any(duplicated(breakpoints))) {
     d <- duplicated(breakpoints)
     if (!all.left && missing(break.spec)) {
-      interval <- rep("R", length(breakpoints))
+      interval <- rep.int("R", length(breakpoints))
       interval[d] <- "L"
     } else if (all.left && missing(break.spec)) {
-      interval <- rep("L", length(breakpoints))
+      interval <- rep.int("L", length(breakpoints))
       interval[which(d) - 1] <- "R"
     } else {
       break.spec <- break.spec[o]
@@ -138,9 +138,9 @@ compdist.dist <- function(..., weights, breakpoints, break.spec, all.left = FALS
     }
   } else {
     if (!all.left && missing(break.spec)){
-      interval <- rep("R", length(breakpoints))
+      interval <- rep.int("R", length(breakpoints))
     } else if (all.left && missing(break.spec)){
-      interval <- rep("L", length(breakpoints))
+      interval <- rep.int("L", length(breakpoints))
     } else {
       break.spec <- break.spec[o]
       if (length(break.spec) != length(breakpoints))
@@ -178,7 +178,7 @@ compdist.default <- function(dist, params, weights, breakpoints, break.spec, all
   if (sum(weights) != 1)
     weights <- weights/sum(weights)
   K <- lapply(1:length(dist), function(i) {
-    D <- get(paste(dist[i], "dist", sep = ""), mode = "function")
+    D <- get(paste0(dist[i], "dist"), mode = "function")
     do.call(D, as.list(params[[i]]))
   })
   o <- order(breakpoints)
@@ -186,10 +186,10 @@ compdist.default <- function(dist, params, weights, breakpoints, break.spec, all
   if (any(duplicated(breakpoints))) {
     d <- duplicated(breakpoints)
     if (!all.left && missing(break.spec)) {
-      interval <- rep("R", length(breakpoints))
+      interval <- rep.int("R", length(breakpoints))
       interval[d] <- "L"
     } else if (all.left && missing(break.spec)) {
-      interval <- rep("L", length(breakpoints))
+      interval <- rep.int("L", length(breakpoints))
       interval[which(d) - 1] <- "R"
     } else {
       break.spec <- break.spec[o]
@@ -203,8 +203,8 @@ compdist.default <- function(dist, params, weights, breakpoints, break.spec, all
     }
   } else {
     if (!all.left && missing(break.spec))
-      interval <- rep("R", length(breakpoints)) else if (all.left && missing(break.spec))
-        interval <- rep("L", length(breakpoints)) else {
+      interval <- rep.int("R", length(breakpoints)) else if (all.left && missing(break.spec))
+        interval <- rep.int("L", length(breakpoints)) else {
           break.spec <- break.spec[o]
           if (length(break.spec) != length(breakpoints))
             stop("length of breakpoints and it's specification has to be equal")

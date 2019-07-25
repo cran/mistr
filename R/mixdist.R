@@ -52,7 +52,7 @@ mixdist.default <- function(dist, params, weights,...) {
     if (sum(weights) != 1)
         weights <- weights/sum(weights)
     K <- lapply(1:length(dist), function(i) {
-        D <- get(paste(dist[i], "dist", sep = ""), mode = "function")
+        D <- get(paste0(dist[i], "dist"), mode = "function")
         do.call(D, as.list(params[[i]]))
     })
     if (length(K) == 1)

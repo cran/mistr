@@ -28,7 +28,7 @@
 dburr <- function(x, shape1, shape2, log = FALSE) {
   if (shape1 <= 0 || shape2 <= 0) {
     warning("NaNs produced")
-    return(rep(NaN, length(x)))
+    return(rep.int(NaN, length(x)))
   }
   Z <- numeric(length(x))
   nat <- is.na(x)
@@ -46,7 +46,7 @@ dburr <- function(x, shape1, shape2, log = FALSE) {
 pburr <- function(q, shape1, shape2, lower.tail = TRUE, log.p = FALSE) {
     if (shape1 <= 0 || shape2 <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(q)))
+        return(rep.int(NaN, length(q)))
     }
     Z <- numeric(length(q))
     nat <- is.na(q)
@@ -69,7 +69,7 @@ pburr <- function(q, shape1, shape2, lower.tail = TRUE, log.p = FALSE) {
 qburr <- function(p, shape1, shape2, lower.tail = TRUE, log.p = FALSE) {
     if (shape1 <= 0 || shape2 <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(p)))
+        return(rep.int(NaN, length(p)))
     }
     Z <- numeric(length(p))
     nat <- is.na(p)
@@ -93,7 +93,7 @@ qburr <- function(p, shape1, shape2, lower.tail = TRUE, log.p = FALSE) {
 rburr <- function(n, shape1, shape2) {
     if (shape1 <= 0 || shape2 <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, n))
+        return(rep.int(NaN, n))
     }
     ((runif(n))^(-1/shape2) - 1)^(1/shape1)
 }
@@ -130,7 +130,7 @@ rburr <- function(n, shape1, shape2) {
 dgumbel <- function(x, loc, scale, log = FALSE) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(x)))
+        return(rep.int(NaN, length(x)))
     }
     Z <- numeric(length(x))
     nat <- is.na(x)
@@ -147,7 +147,7 @@ dgumbel <- function(x, loc, scale, log = FALSE) {
 pgumbel <- function(q, loc, scale, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(q)))
+        return(rep.int(NaN, length(q)))
     }
     Z <- numeric(length(q))
     nat <- is.na(q)
@@ -167,7 +167,7 @@ pgumbel <- function(q, loc, scale, lower.tail = TRUE, log.p = FALSE) {
 qgumbel <- function(p, loc, scale, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(p)))
+        return(rep.int(NaN, length(p)))
     }
     Z <- numeric(length(p))
     nat <- is.na(p)
@@ -191,7 +191,7 @@ qgumbel <- function(p, loc, scale, lower.tail = TRUE, log.p = FALSE) {
 rgumbel <- function(n, loc, scale) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, n))
+        return(rep.int(NaN, n))
     }
     loc - scale * log(-log(runif(n)))
 }
@@ -230,7 +230,7 @@ rgumbel <- function(n, loc, scale) {
 dfrechet <- function(x, loc = 0, scale = 1, shape = 1, log = FALSE) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(x)))
+        return(rep.int(NaN, length(x)))
     }
     Z <- numeric(length(x))
     nat <- is.na(x)
@@ -250,7 +250,7 @@ dfrechet <- function(x, loc = 0, scale = 1, shape = 1, log = FALSE) {
 pfrechet <- function(q, loc = 0, scale = 1, shape = 1, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(q)))
+        return(rep.int(NaN, length(q)))
     }
     Z <- numeric(length(q))
     nat <- is.na(q)
@@ -273,7 +273,7 @@ pfrechet <- function(q, loc = 0, scale = 1, shape = 1, lower.tail = TRUE, log.p 
 qfrechet <- function(p, loc = 0, scale = 1, shape = 1, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(p)))
+        return(rep.int(NaN, length(p)))
     }
     Z <- numeric(length(p))
     nat <- is.na(p)
@@ -297,7 +297,7 @@ qfrechet <- function(p, loc = 0, scale = 1, shape = 1, lower.tail = TRUE, log.p 
 rfrechet <- function(n, loc = 0, scale = 1, shape = 1) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, n))
+        return(rep.int(NaN, n))
     }
     loc + scale * (-log(runif(n)))^(-1/shape)
 }
@@ -334,7 +334,7 @@ rfrechet <- function(n, loc = 0, scale = 1, shape = 1) {
 dpareto <- function(x, scale = 1, shape = 1, log = FALSE) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(x)))
+        return(rep.int(NaN, length(x)))
     }
     Z <- numeric(length(x))
     nat <- is.na(x)
@@ -353,7 +353,7 @@ dpareto <- function(x, scale = 1, shape = 1, log = FALSE) {
 ppareto <- function(q, scale = 1, shape = 1, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(q)))
+        return(rep.int(NaN, length(q)))
     }
     Z <- numeric(length(q))
     nat <- is.na(q)
@@ -374,7 +374,7 @@ ppareto <- function(q, scale = 1, shape = 1, lower.tail = TRUE, log.p = FALSE) {
 qpareto <- function(p, scale = 1, shape = 1, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(p)))
+        return(rep.int(NaN, length(p)))
     }
     Z <- numeric(length(p))
     nat <- is.na(p)
@@ -398,7 +398,7 @@ qpareto <- function(p, scale = 1, shape = 1, lower.tail = TRUE, log.p = FALSE) {
 rpareto <- function(n, scale = 1, shape = 1) {
     if (scale <= 0 || shape <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, n))
+        return(rep.int(NaN, n))
     }
     scale * (runif(n))^(-1/shape)
 }
@@ -443,7 +443,7 @@ rpareto <- function(n, scale = 1, shape = 1) {
 dGPD <- function(x, loc = 0, scale = 1, shape = 0, log = FALSE) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(x)))
+        return(rep.int(NaN, length(x)))
     }
     Z <- numeric(length(x))
     nat <- is.na(x)
@@ -470,7 +470,7 @@ dGPD <- function(x, loc = 0, scale = 1, shape = 0, log = FALSE) {
 pGPD <- function(q, loc = 0, scale = 1, shape = 0, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(q)))
+        return(rep.int(NaN, length(q)))
     }
     Z <- numeric(length(q))
     nat <- is.na(q)
@@ -502,7 +502,7 @@ pGPD <- function(q, loc = 0, scale = 1, shape = 0, lower.tail = TRUE, log.p = FA
 qGPD <- function(p, loc = 0, scale = 1, shape = 0, lower.tail = TRUE, log.p = FALSE) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, length(p)))
+        return(rep.int(NaN, length(p)))
     }
     Z <- numeric(length(p))
     nat <- is.na(p)
@@ -530,7 +530,7 @@ qGPD <- function(p, loc = 0, scale = 1, shape = 0, lower.tail = TRUE, log.p = FA
 rGPD <- function(n, loc = 0, scale = 1, shape = 0) {
     if (scale <= 0) {
         warning("NaNs produced")
-        return(rep(NaN, n))
+        return(rep.int(NaN, n))
     }
     if (shape == 0)
         loc - scale * log(runif(n)) else loc + ((runif(n))^(-shape) - 1) * scale/shape

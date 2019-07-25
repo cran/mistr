@@ -36,7 +36,7 @@ d <- function(O, x, log = FALSE) UseMethod("d")
 #' @rdname d
 #' @export
 d.standist <- function(O, x, log = FALSE) {
-    func <- get(paste("d", strsplit(class(O)[1], "dist")[[1]], sep = ""), mode = "function")
+    func <- get(paste0("d", strsplit(class(O)[1], "dist")[[1]]), mode = "function")
     suppressWarnings(do.call(func, c(list(x = x), O$parameters, list(log = log))))
 }
 
@@ -70,7 +70,7 @@ p <- function(O, q, lower.tail = TRUE, log.p = FALSE) UseMethod("p")
 #' @rdname p
 #' @export
 p.standist <- function(O, q, lower.tail = TRUE, log.p = FALSE) {
-    func <- get(paste("p", strsplit(class(O)[1], "dist")[[1]], sep = ""), mode = "function")
+    func <- get(paste0("p", strsplit(class(O)[1], "dist")[[1]]), mode = "function")
     do.call(func, c(list(q = q), O$parameters, list(lower.tail = lower.tail, log.p = log.p)))
 }
 
@@ -104,7 +104,7 @@ q <- function(O, p, lower.tail = TRUE, log.p = FALSE, ...) UseMethod("q")
 #' @rdname q
 #' @export
 q.standist <- function(O, p, lower.tail = TRUE, log.p = FALSE, ...) {
-    func <- get(paste("q", strsplit(class(O)[1], "dist")[[1]], sep = ""), mode = "function")
+    func <- get(paste0("q", strsplit(class(O)[1], "dist")[[1]]), mode = "function")
     do.call(func, c(list(p = p), O$parameters, list(lower.tail = lower.tail, log.p = log.p)))
 }
 
@@ -205,21 +205,21 @@ r <- function(O, n) UseMethod("r")
 #' @rdname r
 #' @export
 r.standist <- function(O, n) {
-    func <- get(paste("r", strsplit(class(O)[1], "dist")[[1]], sep = ""), mode = "function")
+    func <- get(paste0("r", strsplit(class(O)[1], "dist")[[1]]), mode = "function")
     do.call(func, c(list(n = n), O$parameters))
 }
 
 #' @rdname r
 #' @export
 r.hyperdist <- function(O, n) {
-    func <- get(paste("r", strsplit(class(O)[1], "dist")[[1]], sep = ""), mode = "function")
+    func <- get(paste0("r", strsplit(class(O)[1], "dist")[[1]]), mode = "function")
     do.call(func, c(list(nn = n), O$parameters))
 }
 
 #' @rdname r
 #' @export
 r.wilcoxdist <- function(O, n) {
-    func <- get(paste("r", strsplit(class(O)[1], "dist")[[1]], sep = ""), mode = "function")
+    func <- get(paste0("r", strsplit(class(O)[1], "dist")[[1]]), mode = "function")
     do.call(func, c(list(nn = n), O$parameters))
 }
 

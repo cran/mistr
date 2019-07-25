@@ -314,27 +314,27 @@ NULL
 #' @export
 summary.standist <- function(object, level = 1, space = 2, additional_list, truncation, ...) {
     if (missing(additional_list)) {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), object$type, " Distribution:"), "\n")
-        cat(sep = "", paste(rep("   ", level - 1), collapse = ""), paste(rep("-", nchar(object$type) + 14), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), object$type, " Distribution:"), "\n")
+        cat(sep = "", paste(rep.int("   ", level - 1), collapse = ""), paste(rep.int("-", nchar(object$type) + 14), collapse = ""), " \n")
         Parameters <- paste(names(object$parameters), unlist(object$parameters), sep = " = ", collapse = ", ")
         Support <- paste(c("From", "To"), c(object$support$from, object$support$to), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Parameters: ", Parameters), rep("\n", space))
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Support: ", Support, sep = ""), "\n")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "_____________________________", sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Parameters: ", Parameters), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Support: ", Support, sep = ""), "\n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "_____________________________", sep = ""), rep.int("\n", space))
     } else {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", object$type, " Distribution:"),
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", object$type, " Distribution:"),
             "\n")
-        cat(paste(rep("   ", level), collapse = ""), paste(rep("-", nchar(object$type) + 14), collapse = ""), " \n")
+        cat(paste(rep.int("   ", level), collapse = ""), paste(rep.int("-", nchar(object$type) + 14), collapse = ""), " \n")
         Parameters <- paste(names(object$parameters), unlist(object$parameters), sep = " = ", collapse = ", ")
         Support <- paste(c("From", "To"), c(object$support$from, object$support$to), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Parameters: ", Parameters), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Support: ", Support, sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Parameters: ", Parameters), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Support: ", Support, sep = ""), rep.int("\n", space))
         if (!missing(truncation))
-            cat(paste0(paste(rep("   ", level), collapse = ""), " Truncated to: ", truncation), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
+            cat(paste0(paste(rep.int("   ", level), collapse = ""), " Truncated to: ", truncation), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
             4), ", Overall weight in model = ", round(additional_list$cumprob, 4), sep = ""), "\n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " __________________________________________________________________",
-            sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " __________________________________________________________________",
+            sep = ""), rep.int("\n", space))
     }
     invisible(object)
 }
@@ -344,30 +344,30 @@ summary.standist <- function(object, level = 1, space = 2, additional_list, trun
 #' @export
 summary.trans_standist <- function(object, level = 1, space = 2, additional_list, truncation, ...) {
     if (missing(additional_list)) {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), object$type, " Distribution:"), "\n")
-        cat(sep = "", paste(rep("   ", level - 1), collapse = ""), paste(rep("-", nchar(object$type) + 14), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Transformation: ", deparse(object$trafo$print)), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), object$type, " Distribution:"), "\n")
+        cat(sep = "", paste(rep.int("   ", level - 1), collapse = ""), paste(rep.int("-", nchar(object$type) + 14), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Transformation: ", deparse(object$trafo$print)), rep.int("\n", space))
         Parameters <- paste(names(object$parameters), unlist(object$parameters), sep = " = ", collapse = ", ")
         Support <- paste(c("From", "To"), sudo_support(object), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Parameters: ", Parameters), rep("\n", space))
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Support: ", Support, sep = ""), "\n")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "_____________________________", sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Parameters: ", Parameters), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Support: ", Support, sep = ""), "\n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "_____________________________", sep = ""), rep.int("\n", space))
 
     } else {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", object$type, " Distribution:"),
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", object$type, " Distribution:"),
             "\n")
-        cat(paste(rep("   ", level), collapse = ""), paste(rep("-", nchar(object$type) + 14), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Transformation: ", deparse(object$trafo$print)), rep("\n", space))
+        cat(paste(rep.int("   ", level), collapse = ""), paste(rep.int("-", nchar(object$type) + 14), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Transformation: ", deparse(object$trafo$print)), rep.int("\n", space))
         Parameters <- paste(names(object$parameters), unlist(object$parameters), sep = " = ", collapse = ", ")
         Support <- paste(c("From", "To"), sudo_support(object), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Parameters: ", Parameters), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Support: ", Support, sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Parameters: ", Parameters), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Support: ", Support, sep = ""), rep.int("\n", space))
         if (!missing(truncation))
-            cat(paste0(paste(rep("   ", level), collapse = ""), " Truncated to: ", truncation), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
+            cat(paste0(paste(rep.int("   ", level), collapse = ""), " Truncated to: ", truncation), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
             4), ", Overall weight in model = ", round(additional_list$cumprob, 4), sep = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " __________________________________________________________________",
-            sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " __________________________________________________________________",
+            sep = ""), rep.int("\n", space))
     }
     invisible(object)
 }
@@ -379,27 +379,27 @@ summary.trans_standist <- function(object, level = 1, space = 2, additional_list
 summary.mixdist <- function(object, level = 1, space = 2, additional_list, truncation, ...) {
     g <- object$weights
     if (missing(additional_list)) {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Mixture Distribution:"), "\n")
-        cat(sep = "", paste(rep("   ", level - 1), collapse = ""), paste(rep("-", 21), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Mixture Distribution:"), "\n")
+        cat(sep = "", paste(rep.int("   ", level - 1), collapse = ""), paste(rep.int("-", 21), collapse = ""), " \n")
         Support <- paste(c("From", "To"), sudo_support(object), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Support: ", Support), rep("\n", space))
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Components:"), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Support: ", Support), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Components:"), rep.int("\n", space))
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i], model = "Mixture")))
     } else {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Mixture Distribution:"), "\n")
-        cat(paste(rep("   ", level), collapse = ""), paste(rep("-", 21), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
-            collapse = ", ")), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Mixture Distribution:"), "\n")
+        cat(paste(rep.int("   ", level), collapse = ""), paste(rep.int("-", 21), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
+            collapse = ", ")), rep.int("\n", space))
         if (!missing(truncation))
-            cat(paste0(paste(rep("   ", level), collapse = ""), " Truncated to: ", truncation), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Components:"), rep("\n", space))
+            cat(paste0(paste(rep.int("   ", level), collapse = ""), " Truncated to: ", truncation), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Components:"), rep.int("\n", space))
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i] * additional_list$cumprob, model = "Mixture")))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
             4), ", Overall weight in model = ", round(additional_list$cumprob, 4), sep = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " _______________________________________________________________________",
-            sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " _______________________________________________________________________",
+            sep = ""), rep.int("\n", space))
     }
     invisible(object)
 }
@@ -410,29 +410,29 @@ summary.mixdist <- function(object, level = 1, space = 2, additional_list, trunc
 summary.trans_mixdist <- function(object, level = 1, space = 2, additional_list, truncation, ...) {
     g <- object$weights
     if (missing(additional_list)) {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Mixture Distribution:"), "\n")
-        cat(sep = "", paste(rep("   ", level - 1), collapse = ""), paste(rep("-", 21), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Transformation: ", deparse(object$trafo$print)), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Mixture Distribution:"), "\n")
+        cat(sep = "", paste(rep.int("   ", level - 1), collapse = ""), paste(rep.int("-", 21), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Transformation: ", deparse(object$trafo$print)), rep.int("\n", space))
         Support <- paste(c("From", "To"), sudo_support(object), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Support: ", Support), rep("\n", space))
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Components:"), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Support: ", Support), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Components:"), rep.int("\n", space))
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i], model = "Mixture")))
     } else {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Mixture Distribution:"), "\n")
-        cat(paste(rep("   ", level), collapse = ""), paste(rep("-", 21), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Transformation: ", deparse(object$trafo$print)), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
-            collapse = ", ")), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Mixture Distribution:"), "\n")
+        cat(paste(rep.int("   ", level), collapse = ""), paste(rep.int("-", 21), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Transformation: ", deparse(object$trafo$print)), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
+            collapse = ", ")), rep.int("\n", space))
         if (!missing(truncation))
-            cat(paste0(paste(rep("   ", level), collapse = ""), " Truncated to: ", truncation), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Components:"), rep("\n", space))
+            cat(paste0(paste(rep.int("   ", level), collapse = ""), " Truncated to: ", truncation), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Components:"), rep.int("\n", space))
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i] * additional_list$cumprob, model = "Mixture")))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
             4), ", Overall weight in model = ", round(additional_list$cumprob, 4), sep = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " _______________________________________________________________________",
-            sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " _______________________________________________________________________",
+            sep = ""), rep.int("\n", space))
     }
     invisible(object)
 }
@@ -444,36 +444,36 @@ summary.trans_mixdist <- function(object, level = 1, space = 2, additional_list,
 summary.compdist <- function(object, level = 1, space = 2, additional_list, truncation, ...) {
     g <- object$weights
     if (missing(additional_list)) {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Composite Distribution:"), "\n")
-        cat(sep = "", paste(rep("   ", level - 1), collapse = ""), paste(rep("-", 23), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Composite Distribution:"), "\n")
+        cat(sep = "", paste(rep.int("   ", level - 1), collapse = ""), paste(rep.int("-", 23), collapse = ""), " \n")
         Support <- paste(c("From", "To"), sudo_support(object), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Support: ", Support), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Support: ", Support), rep.int("\n", space))
         vv <- unlist(lapply(object$interval, function(x) if (x == "R")
             c(")", "[") else c("]", "(")))
         b <- paste(c("(", vv[seq.int(1L, length(vv), 2L) + 1]), c("-Inf", object$breakpoints), ",", c(object$breakpoints, "Inf"), c(vv[seq.int(1L,
             length(vv), 2L)], ")"), sep = "")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Components:"), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Components:"), rep.int("\n", space))
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i], model = "Composite"), truncation = b[i]))
     } else {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Composite Distribution:"),
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Composite Distribution:"),
             "\n")
-        cat(paste(rep("   ", level), collapse = ""), paste(rep("-", 23), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
-            collapse = ", ")), rep("\n", space))
+        cat(paste(rep.int("   ", level), collapse = ""), paste(rep.int("-", 23), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
+            collapse = ", ")), rep.int("\n", space))
         if (!missing(truncation))
-            cat(paste0(paste(rep("   ", level), collapse = ""), " Truncated to: ", truncation), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Components:"), rep("\n", space))
+            cat(paste0(paste(rep.int("   ", level), collapse = ""), " Truncated to: ", truncation), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Components:"), rep.int("\n", space))
         vv <- unlist(lapply(object$interval, function(x) if (x == "R")
             c(")", "[") else c("]", "(")))
         b <- paste(c("(", vv[seq.int(1L, length(vv), 2L) + 1]), c("-Inf", object$breakpoints), ",", c(object$breakpoints, "Inf"), c(vv[seq.int(1L,
             length(vv), 2L)], ")"), sep = "")
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i] * additional_list$cumprob, model = "Composite"), truncation = b[i]))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
             4), ", Overall weight in model = ", round(additional_list$cumprob, 4), sep = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " _______________________________________________________________________",
-            sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " _______________________________________________________________________",
+            sep = ""), rep.int("\n", space))
     }
     invisible(object) 
 }
@@ -484,38 +484,38 @@ summary.compdist <- function(object, level = 1, space = 2, additional_list, trun
 summary.trans_compdist <- function(object, level = 1, space = 2, additional_list, truncation, ...) {
     g <- object$weights
     if (missing(additional_list)) {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Composite Distribution:"), "\n")
-        cat(sep = "", paste(rep("   ", level - 1), collapse = ""), paste(rep("-", 23), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Transformation: ", deparse(object$trafo$print)), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Composite Distribution:"), "\n")
+        cat(sep = "", paste(rep.int("   ", level - 1), collapse = ""), paste(rep.int("-", 23), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Transformation: ", deparse(object$trafo$print)), rep.int("\n", space))
         Support <- paste(c("From", "To"), sudo_support(object), sep = ": ", collapse = ", ")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Support: ", Support), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Support: ", Support), rep.int("\n", space))
         vv <- unlist(lapply(object$interval, function(x) if (x == "R")
             c(")", "[") else c("]", "(")))
         b <- paste(c("(", vv[seq.int(1L, length(vv), 2L) + 1]), c("-Inf", object$breakpoints), ",", c(object$breakpoints, "Inf"), c(vv[seq.int(1L,
             length(vv), 2L)], ")"), sep = "")
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "Components:"), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "Components:"), rep.int("\n", space))
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i], model = "Composite"), truncation = b[i]))
     } else {
-        cat(paste0(paste(rep("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Composite Distribution:"),
+        cat(paste0(paste(rep.int("   ", level - 1), collapse = ""), "[", additional_list$n, "] ", "Composite Distribution:"),
             "\n")
-        cat(paste(rep("   ", level), collapse = ""), paste(rep("-", 23), collapse = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Transformation: ", deparse(object$trafo$print)), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
-            collapse = ", ")), rep("\n", space))
+        cat(paste(rep.int("   ", level), collapse = ""), paste(rep.int("-", 23), collapse = ""), " \n")
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Transformation: ", deparse(object$trafo$print)), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Support: ", paste(c("From", "To"), sudo_support(object), sep = ": ",
+            collapse = ", ")), rep.int("\n", space))
         if (!missing(truncation))
-            cat(paste0(paste(rep("   ", level), collapse = ""), " Truncated to: ", truncation), rep("\n", space))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Components:"), rep("\n", space))
+            cat(paste0(paste(rep.int("   ", level), collapse = ""), " Truncated to: ", truncation), rep.int("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Components:"), rep.int("\n", space))
         vv <- unlist(lapply(object$interval, function(x) if (x == "R")
             c(")", "[") else c("]", "(")))
         b <- paste(c("(", vv[seq.int(1L, length(vv), 2L) + 1]), c("-Inf", object$breakpoints), ",", c(object$breakpoints, "Inf"), c(vv[seq.int(1L,
             length(vv), 2L)], ")"), sep = "")
         n <- lapply(seq_along(object$objects), function(i) summary(object$objects[[i]], level = level + 1, space = space, additional_list = list(n = i,
             prob = g[i], cumprob = g[i] * additional_list$cumprob, model = "Composite"), truncation = b[i]))
-        cat(paste0(paste(rep("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " Weight in ", additional_list$model, " model = ", round(additional_list$prob,
             4), ", Overall weight in model = ", round(additional_list$cumprob, 4), sep = ""), " \n")
-        cat(paste0(paste(rep("   ", level), collapse = ""), " _______________________________________________________________________",
-            sep = ""), rep("\n", space))
+        cat(paste0(paste(rep.int("   ", level), collapse = ""), " _______________________________________________________________________",
+            sep = ""), rep.int("\n", space))
     }
     invisible(object)
 }

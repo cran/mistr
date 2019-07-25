@@ -27,7 +27,7 @@ jumps.discrdist <- function(O, interval) {
   interval <- c(max(sudo_support(O)["From"], interval[1]), min(sudo_support(O)["To"], interval[2]))
   g <- c((round((interval[1] - O$support$from), 14)%/%O$support$by) * O$support$by + O$support$from, (round((interval[2] -
                                                                                                                O$support$from), 14)%/%O$support$by + 1) * O$support$by + O$support$from)
-  v <- seq(max(g[1], O$support$from), min(g[2], O$support$to), by = O$support$by)
+  v <- seq.int(max(g[1], O$support$from), min(g[2], O$support$to), by = O$support$by)
   v <- v[v <= interval[2] & v >= interval[1]]
   sort(v)
 }
@@ -165,13 +165,13 @@ plot.compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 
     only_mix = TRUE
   h <- rainbow(l)
   br <- unique(x$breakpoints)
-  g2 <- paste(round(cumsum(g[-length(g)]) * 100, 2), "%", sep = "")
+  g2 <- paste0(round(cumsum(g[-length(g)]) * 100, 2), "%")
   dubl <- duplicated(x$breakpoints) | duplicated(x$breakpoints, fromLast = TRUE)
   g22 <- numeric(length(br))
   g22[table(x$breakpoints) == 1] <- g2[!dubl]
   g22[table(x$breakpoints) == 2] <- paste(g2[dubl][c(T, F)], g2[dubl][c(F, T)], sep = "-")
   if (tolower(which) == "cdf") {
-    t <- sort(unique(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- sort(unique(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     val = p(x, t)
     if (only_mix) {
       plot(t, val, col = col, xlim = xlim1, ylim = ylim1, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
@@ -195,8 +195,8 @@ plot.compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 
       }
     }
   } else if (tolower(which) == "pdf") {
-    t <- sort(unique(c(seq(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
-    val = c(d(x, t), rep(0, sum(duplicated(x$breakpoints))))
+    t <- sort(unique(c(seq.int(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
+    val = c(d(x, t), rep.int(0, sum(duplicated(x$breakpoints))))
     t <- c(t, x$breakpoints[duplicated(x$breakpoints)])
     if (only_mix) {
       plot(t, val, col = col, xlim = xlim2, ylim = ylim2, type = type2, lty = lty2, lwd = lwd2, xlab = xlab2, ylab = ylab2,
@@ -252,13 +252,13 @@ plot.trans_compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, 
   l <- length(x$objects)
   h <- rainbow(l)
   br <- unique(breakp)
-  g2 <- paste(round(cumsum(g[-length(g)]) * 100, 2), "%", sep = "")
+  g2 <- paste0(round(cumsum(g[-length(g)]) * 100, 2), "%")
   dubl <- duplicated(breakp) | duplicated(breakp, fromLast = TRUE)
   g22 <- numeric(length(br))
   g22[table(breakp) == 1] <- g2[!dubl]
   g22[table(breakp) == 2] <- paste(g2[dubl][c(T, F)], g2[dubl][c(F, T)], sep = "-")
   if (tolower(which) == "cdf") {
-    t <- sort(unique(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- sort(unique(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     val = p(x, t)
     if (only_mix) {
       plot(t, val, col = col, xlim = xlim1, ylim = ylim1, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
@@ -282,8 +282,8 @@ plot.trans_compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, 
       }
     }
   } else if (tolower(which) == "pdf") {
-    t <- sort(unique(c(seq(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
-    val = c(d(x, t), rep(0, sum(duplicated(x$breakpoints))))
+    t <- sort(unique(c(seq.int(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
+    val = c(d(x, t), rep.int(0, sum(duplicated(x$breakpoints))))
     t <- c(t, breakp[duplicated(breakp)])
     if (only_mix) {
       plot(t, val, col = col, xlim = xlim2, ylim = ylim2, type = type2, lty = lty2, lwd = lwd2, xlab = xlab2, ylab = ylab2,
@@ -327,11 +327,11 @@ plot.contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e
   if (any(is.infinite(xlim1)))
     stop("please select xlim1")
   if (tolower(which) == "cdf") {
-    t <- seq(from = xlim1[1], to = xlim1[2], length.out = pp1)
+    t <- seq.int(from = xlim1[1], to = xlim1[2], length.out = pp1)
     plot(t, p(x, t), type = type1, col = col, xlim = xlim1, ylim = ylim1, xlab = xlab1, ylab = ylab1, main = main1, lty = lty1,
          lwd = lwd1, ...)
   } else if (tolower(which) == "pdf") {
-    tt <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    tt <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     plot(tt, d(x, tt), type = type2, col = col, xlim = xlim2, ylim = ylim2, xlab = xlab2, ylab = ylab2, main = main2,
          lty = lty2, lwd = lwd2, ...)
   } else {
@@ -359,11 +359,11 @@ plot.trans_contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = 
   if (any(is.infinite(xlim1)))
     stop("please select xlim1")
   if (tolower(which) == "cdf") {
-    t <- seq(from = xlim1[1], to = xlim1[2], length.out = pp1)
+    t <- seq.int(from = xlim1[1], to = xlim1[2], length.out = pp1)
     plot(t, p(x, t), type = type1, col = col, xlim = xlim1, ylim = ylim1, xlab = xlab1, ylab = ylab1, main = main1, lty = lty1,
          lwd = lwd1, ...)
   } else if (tolower(which) == "pdf") {
-    tt <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    tt <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     plot(tt, d(x, tt), type = type2, col = col, xlim = xlim2, ylim = ylim2, xlab = xlab2, ylab = ylab2, main = main2,
          lty = lty2, lwd = lwd2, ...)
   } else {
@@ -474,7 +474,7 @@ plot.contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2
   l <- length(x$objects)
   h <- rainbow(l)
   if (tolower(which) == "cdf") {
-    t <- seq(xlim1[1], xlim1[2], length.out = pp1)
+    t <- seq.int(xlim1[1], xlim1[2], length.out = pp1)
     if (only_mix) {
       plot(t, p(x, t), xlim = xlim1, ylim = ylim1, col = col, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
            main = main1, ...)
@@ -489,7 +489,7 @@ plot.contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2
       lines(t, p(x, t), lty = lty1, lwd = lwd1)
     }
   } else if (tolower(which) == "pdf") {
-    t <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    t <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     if (only_mix) {
       plot(t, d(x, t), xlim = xlim2, ylim = ylim2, col = col, type = type2, lty = lty2, lwd = lwd2, xlab = xlab2, ylab = ylab2,
            main = main2, ...)
@@ -530,7 +530,7 @@ plot.trans_contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 100
   l <- length(x$objects)
   h <- rainbow(l)
   if (tolower(which) == "cdf") {
-    t <- seq(xlim1[1], xlim1[2], length.out = pp1)
+    t <- seq.int(xlim1[1], xlim1[2], length.out = pp1)
     if (only_mix) {
       plot(t, p(x, t), xlim = xlim1, ylim = ylim1, col = col, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
            main = main1, ...)
@@ -545,7 +545,7 @@ plot.trans_contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 100
       lines(t, p(x, t), lty = lty1, lwd = lwd1)
     }
   } else if (tolower(which) == "pdf") {
-    t <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    t <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     if (only_mix) {
       plot(t, d(x, t), xlim = xlim2, ylim = ylim2, type = type2, lty = lty2, lwd = lwd2, xlab = xlab2, ylab = ylab2,
            main = main2, ...)
@@ -588,7 +588,7 @@ plot.discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp
   l <- length(x$objects)
   h <- rainbow(l)
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       plot(t, p(x, t), col = col, xlim = xlim1, ylim = ylim1, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
            main = main1, ...)
@@ -606,7 +606,7 @@ plot.discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp
   } else if (tolower(which) == "pdf") {
     j <- jumps(x, xlim2)
     names(j) <- round(j, 2)
-    t <- c(j, seq(xlim2[1] - 0.1, xlim2[2] + 0.1, length.out = pp2))
+    t <- c(j, seq.int(xlim2[1] - 0.1, xlim2[2] + 0.1, length.out = pp2))
     t <- sort(t[!duplicated(t)])
     l2 <- t(mapply(function(x, y) y * d(x, t), x$objects, g))
     colnames(l2) <- names(t)
@@ -647,7 +647,7 @@ plot.trans_discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 10
   h <- rainbow(l)
   obj <- lapply(x$objects, function(z) eval(x$trafo$print, list(X = z)))
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       plot(t, p(x, t), col = col, xlim = xlim1, ylim = ylim1, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
            main = main1, ...)
@@ -665,7 +665,7 @@ plot.trans_discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 10
   } else if (tolower(which) == "pdf") {
     j <- jumps(x, xlim2)
     names(j) <- round(j, 2)
-    t <- c(j, seq(xlim2[1] - 0.1, xlim2[2] + 0.1, length.out = pp2))
+    t <- c(j, seq.int(xlim2[1] - 0.1, xlim2[2] + 0.1, length.out = pp2))
     t <- sort(t[!duplicated(t)])
     l2 <- t(mapply(function(x, y) y * d(x, t), obj, g))
     colnames(l2) <- names(t)
@@ -704,7 +704,7 @@ plot.contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000
   l <- length(x$objects)
   h <- rainbow(l)
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       plot(t, p(x, t), col = col, xlim = xlim1, ylim = ylim1, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
            main = main1, ...)
@@ -720,7 +720,7 @@ plot.contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000
       lines(t, l3, lty = lty1, lwd = lwd1)
     }
   } else if (tolower(which) == "pdf") {
-    t <- unique(sort(c(seq(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
+    t <- unique(sort(c(seq.int(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
     l2 <- mapply(function(x, y) y * d(x, t), x$objects, g)
     l3 <- rowSums(l2)
     if (only_mix) {
@@ -764,7 +764,7 @@ plot.trans_contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 
   h <- rainbow(l)
   obj <- lapply(x$objects, function(z) eval(x$trafo$print, list(X = z)))
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       plot(t, p(x, t), col = col, xlim = xlim1, ylim = ylim1, type = type1, lty = lty1, lwd = lwd1, xlab = xlab1, ylab = ylab1,
            main = main1, ...)
@@ -780,7 +780,7 @@ plot.trans_contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 
       lines(t, l3, lty = lty1, lwd = lwd1)
     }
   } else if (tolower(which) == "pdf") {
-    t <- unique(sort(c(seq(xlim2[1], xlim2[2], length.out = pp1), jumps(x, xlim2))))
+    t <- unique(sort(c(seq.int(xlim2[1], xlim2[2], length.out = pp1), jumps(x, xlim2))))
     l2 <- mapply(function(x, y) y * d(x, t), obj, g)
     l3 <- rowSums(l2)
     if (only_mix) {
@@ -973,7 +973,7 @@ multiplot <- function(..., plotlist = NULL, cols, layout = NULL) {
   numPlots = length(plots)
   
   if (is.null(layout)) {
-    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)), ncol = cols, nrow = ceiling(numPlots/cols))
+    layout <- matrix(seq.int(1, cols * ceiling(numPlots/cols)), ncol = cols, nrow = ceiling(numPlots/cols))
   }
   
   if (numPlots == 1) {
@@ -1044,7 +1044,7 @@ mistr_theme <- function(grey = FALSE, blue = FALSE, legend.position = "right", .
 #' @description The function \code{autoplot} plots the CDF and PDF of a given distribution object.
 #' @param x distribution object.
 #' @param which whether to plot only CDF, PDF or both, default: 'all'.
-#' @param cols in how many columns should the plots be merged, default: 2.
+#' @param ncols in how many columns should the plots be merged, default: 2.
 #' @param ... further arguments to be passed.
 #' @details The function is a wrapper of the internal plotting function plotgg. For more 
 #' details see \code{\link{plotgg}}.
@@ -1068,7 +1068,7 @@ mistr_theme <- function(grey = FALSE, blue = FALSE, legend.position = "right", .
 #'   S3method(ggplot2::autoplot, "dist")
 #'   S3method(ggplot2::autoplot, "comp_fit")
 #' }
-autoplot.dist <- function(x, which = "all", cols = 2, ...){
+autoplot.dist <- function(x, which = "all", ncols = 2, ...){
    if (tolower(which) == "cdf") {
       plotgg(x, which = "cdf", ...)
    } else if (tolower(which) == "pdf") {
@@ -1076,7 +1076,7 @@ autoplot.dist <- function(x, which = "all", cols = 2, ...){
    } else{
       p1 <- plotgg(x, which = "cdf", ...)
       p2 <- plotgg(x, which = "pdf", ...)
-      multiplot(p1, p2, cols = cols)
+      multiplot(p1, p2, cols = ncols)
       invisible(list(cdf = p1, pdf = p2))
    }
 }
@@ -1140,7 +1140,7 @@ plotgg.contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#F9
                             size1 = 1, size2 = 1, alpha1 = 0.7, alpha2 = 0.7, ...) {
   if (any(is.infinite(xlim1))) stop("please select xlim")
   if (tolower(which) == "cdf") {
-    t <- seq(xlim1[1], xlim1[2], length.out = pp1)
+    t <- seq.int(xlim1[1], xlim1[2], length.out = pp1)
     h <- p(x, t)
     df1 <- data.frame(t, h)
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes(t, h), color = col, fill = col, size = size1, alpha = alpha1) +
@@ -1148,7 +1148,7 @@ plotgg.contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#F9
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1) +
       mistr_theme(...)
   } else{
-    tt <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    tt <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     h <- d(x, tt)
     df1 <- data.frame(tt, h)
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes(tt, h), color = col, fill = col, size = size2, alpha = alpha2) +
@@ -1163,7 +1163,7 @@ plotgg.trans_contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col 
                                   size1 = 1, size2 = 1, alpha1 = 0.7, alpha2 = 0.7, ...) {
   if (any(is.infinite(xlim1))) stop("please select xlim")
   if (tolower(which) == "cdf") {
-    t <- seq(xlim1[1], xlim1[2], length.out = pp1)
+    t <- seq.int(xlim1[1], xlim1[2], length.out = pp1)
     h <- p(x, t)
     df1 <- data.frame(t, h)
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes(t, h), color = col, fill = col, size = size1, alpha = alpha1) +
@@ -1171,7 +1171,7 @@ plotgg.trans_contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col 
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1) +
       mistr_theme(...)
   } else {
-    tt <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    tt <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     h <- d(x, tt)
     df1 <- data.frame(tt, h)
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes(tt, h), color = col, fill = col, size = size2, alpha = alpha2) +
@@ -1252,13 +1252,13 @@ plotgg.contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, p
   g <- x$weights
   n <- length(x$objects)
   if (tolower(which) == "cdf") {
-    t <- seq(xlim1[1], xlim1[2], length.out = pp1)
+    t <- seq.int(xlim1[1], xlim1[2], length.out = pp1)
     l2 <- mapply(function(x, y) y * p(x, t), x$objects, g)
     if (only_mix) {
       l <- rowSums(l2)
       df1 <- data.frame(tt = t, val = l, Distribution = factor(rep("Mix", each = pp1)))
     } else {
-      df1 <- data.frame(tt = rep(t, n), val = c(l2), Distribution = factor(rep(1:n, each = pp1), levels = n:1))
+      df1 <- data.frame(tt = rep.int(t, n), val = c(l2), Distribution = factor(rep(1:n, each = pp1), levels = n:1))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), size = size1, alpha = alpha1) +
       ggplot2::labs(x = xlab1, y = ylab1, title = main1) +
@@ -1266,13 +1266,13 @@ plotgg.contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, p
       mistr_theme(legend.position = legend.position1, ...) +
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1)
   } else {
-    t <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    t <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     l2 <- mapply(function(x, y) y * d(x, t), x$objects, g)
     l <- rowSums(l2)
     if (only_mix) {
       df1 <- data.frame(tt = t, val = l, Distribution = factor(rep("Mix", each = pp2)))
     } else {
-      df1 <- data.frame(tt = rep(t, n + 1), val = c(l2, l), Distribution = factor(rep(c(1:n, "Mix"), each = pp2), levels = c("Mix",
+      df1 <- data.frame(tt = rep.int(t, n + 1), val = c(l2, l), Distribution = factor(rep(c(1:n, "Mix"), each = pp2), levels = c("Mix",
                                                                                                                              n:1)))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), size = size2, alpha = alpha2, position = "identity") +
@@ -1291,13 +1291,13 @@ plotgg.trans_contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1
   n <- length(x$objects)
   obj <- lapply(x$objects, function(z) eval(x$trafo$print, list(X = z)))
   if (tolower(which) == "cdf") {
-    t <- seq(xlim1[1], xlim1[2], length.out = pp1)
+    t <- seq.int(xlim1[1], xlim1[2], length.out = pp1)
     l2 <- mapply(function(x, y) y * p(x, t), obj, g)
     if (only_mix) {
       l <- rowSums(l2)
       df1 <- data.frame(tt = t, val = l, Distribution = factor(rep("Mix", each = pp1)))
     } else {
-      df1 <- data.frame(tt = rep(t, n), val = c(l2), Distribution = factor(rep(1:n, each = pp1), levels = n:1))
+      df1 <- data.frame(tt = rep.int(t, n), val = c(l2), Distribution = factor(rep(1:n, each = pp1), levels = n:1))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), size = size1, alpha = alpha1) +
       mistr_theme(legend.position = legend.position1, ...) +
@@ -1305,13 +1305,13 @@ plotgg.trans_contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1
       ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE), color = ggplot2::guide_legend(reverse = TRUE)) +
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1)
   } else {
-    t <- seq(xlim2[1], xlim2[2], length.out = pp2)
+    t <- seq.int(xlim2[1], xlim2[2], length.out = pp2)
     l2 <- mapply(function(x, y) y * d(x, t), obj, g)
     l <- rowSums(l2)
     if (only_mix) {
       df1 <- data.frame(tt = t, val = l, Distribution = factor(rep("Mix", each = pp2)))
     } else {
-      df1 <- data.frame(tt = rep(t, n + 1), val = c(l2, l), Distribution = factor(rep(c(1:n, "Mix"), each = pp2), levels = c("Mix",
+      df1 <- data.frame(tt = rep.int(t, n + 1), val = c(l2, l), Distribution = factor(rep(c(1:n, "Mix"), each = pp2), levels = c("Mix",
                                                                                                                              n:1)))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), size = size2, alpha = alpha2, position = "identity") +
@@ -1330,12 +1330,12 @@ plotgg.discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, 
   g <- x$weights
   l <- length(x$objects)
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       df1 <- data.frame(tt = t, val = p(x, t), Distribution = factor(rep("Mix", each = length(t))))
     } else {
       l2 <- mapply(function(x, y) y * p(x, t), x$objects, g)
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha1, size = size1) +
       mistr_theme(legend.position = legend.position1, ...) +
@@ -1349,7 +1349,7 @@ plotgg.discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, 
     if (only_mix) {
       df1 <- data.frame(tt = t, val = l3, Distribution = factor(rep("Mix", each = length(t))))
     } else {
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(c(1:l), each = length(t)), levels = c(l:1)))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(c(1:l), each = length(t)), levels = c(l:1)))
     }
     ggplot2::ggplot(df1, ggplot2::aes(width = width)) + ggplot2::geom_bar(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution"), alpha = alpha2, stat = "identity") +
       mistr_theme(legend.position = legend.position2, ...) +
@@ -1367,12 +1367,12 @@ plotgg.trans_discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 
   l <- length(x$objects)
   obj <- lapply(x$objects, function(z) eval(x$trafo$print, list(X = z)))
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1] - 0.1, xlim1[2] + 0.1, length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       df1 <- data.frame(tt = t, val = p(x, t), Distribution = factor(rep("Mix", each = length(t))))
     } else {
       l2 <- mapply(function(x, y) y * p(x, t), obj, g)
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha1, size = size1) +
       mistr_theme(legend.position = legend.position1, ...) +
@@ -1386,7 +1386,7 @@ plotgg.trans_discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 
     if (only_mix) {
       df1 <- data.frame(tt = t, val = l3, Distribution = factor(rep("Mix", each = length(t))))
     } else {
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(c(1:l), each = length(t)), levels = c(l:1)))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(c(1:l), each = length(t)), levels = c(l:1)))
     }
     ggplot2::ggplot(df1, ggplot2::aes(width = width)) + ggplot2::geom_bar(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution"), alpha = alpha2, stat = "identity") +
       mistr_theme(legend.position = legend.position2, ...) +
@@ -1403,12 +1403,12 @@ plotgg.contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 10
   g <- x$weights
   l <- length(x$objects)
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       df1 <- data.frame(tt = t, val = p(x, t), Distribution = factor(rep("Mix", each = length(t))))
     } else {
       l2 <- mapply(function(x, y) y * p(x, t), x$objects, g)
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha1, size = size1) +
       mistr_theme(legend.position = legend.position1, ...) +
@@ -1416,13 +1416,13 @@ plotgg.contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 10
       ggplot2::labs(x = xlab1, y = ylab1, title = main1) +
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1)
   } else {
-    t <- unique(sort(c(seq(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
+    t <- unique(sort(c(seq.int(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
     l2 <- mapply(function(x, y) y * d(x, t), x$objects, g)
     l3 <- rowSums(l2)
     if (only_mix) {
       df1 <- data.frame(tt = t, val = l3, Distribution = factor(rep("Mix", each = length(t))))
     } else {
-      df1 <- data.frame(tt = rep(t, l + 1), val = c(l2, l3), Distribution = factor(rep(c(1:l, "Mix"), each = length(t)),
+      df1 <- data.frame(tt = rep.int(t, l + 1), val = c(l2, l3), Distribution = factor(rep(c(1:l, "Mix"), each = length(t)),
                                                                                    levels = c("Mix", l:1)))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha2, size = size2, position = "identity") +
@@ -1441,12 +1441,12 @@ plotgg.trans_contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp
   l <- length(x$objects)
   obj <- lapply(x$objects, function(z) eval(x$trafo$print, list(X = z)))
   if (tolower(which) == "cdf") {
-    t <- unique(sort(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- unique(sort(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     if (only_mix) {
       df1 <- data.frame(tt = t, val = p(x, t), Distribution = factor(rep("Mix", each = length(t))))
     } else {
       l2 <- mapply(function(x, y) y * p(x, t), obj, g)
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha1, size = size1) +
       mistr_theme(legend.position = legend.position1, ...) +
@@ -1454,13 +1454,13 @@ plotgg.trans_contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp
       ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE), color = ggplot2::guide_legend(reverse = TRUE)) +
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1)
   } else {
-    t <- unique(sort(c(seq(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
+    t <- unique(sort(c(seq.int(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
     l2 <- mapply(function(x, y) y * d(x, t), obj, g)
     l3 <- rowSums(l2)
     if (only_mix) {
       df1 <- data.frame(tt = t, val = l3, Distribution = factor(rep("Mix", each = length(t))))
     } else {
-      df1 <- data.frame(tt = rep(t, l + 1), val = c(l2, l3), Distribution = factor(rep(c(1:l, "Mix"), each = length(t)),
+      df1 <- data.frame(tt = rep.int(t, l + 1), val = c(l2, l3), Distribution = factor(rep(c(1:l, "Mix"), each = length(t)),
                                                                                    levels = c("Mix", l:1)))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha2, size = size2, position = "identity") +
@@ -1479,7 +1479,7 @@ plotgg.compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 
   l <- length(x$objects)
   x$breakpoints <- sort(x$breakpoints)
   if (tolower(which) == "cdf") {
-    t <- sort(unique(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- sort(unique(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     val = p(x, t)
     if (only_mix) {
       df1 <- data.frame(tt = t, val = val, Distribution = factor(rep("Mix", each = length(t))))
@@ -1492,7 +1492,7 @@ plotgg.compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 
         z[int > i] <- g[i]
         z
       })
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(1:l, each = length(t)), levels = l:1))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha1, size = size1) +
       mistr_theme(legend.position = legend.position1, ...) +
@@ -1500,11 +1500,11 @@ plotgg.compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 
       ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE), color = ggplot2::guide_legend(reverse = TRUE)) +
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1)
   } else {
-    t <- sort(unique(c(seq(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
-    val = c(d(x, t), rep(0, sum(duplicated(x$breakpoints))))
+    t <- sort(unique(c(seq.int(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
+    val = c(d(x, t), rep.int(0, sum(duplicated(x$breakpoints))))
     t <- c(t, x$breakpoints[duplicated(x$breakpoints)])
     dubl <- duplicated(x$breakpoints) | duplicated(x$breakpoints, fromLast = TRUE)
-    g2 <- paste(round(cumsum(g[-length(g)]) * 100, 2), "%", sep = "")
+    g2 <- paste0(round(cumsum(g[-length(g)]) * 100, 2), "%")
     br <- unique(x$breakpoints)
     g22 <- numeric(length(br))
     g22[table(x$breakpoints) == 1] <- g2[!dubl]
@@ -1546,7 +1546,7 @@ plotgg.trans_compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000
   }
   breakp <- sort(eval(x$trafo$trans, list(X = x$breakpoints)))
   if (tolower(which) == "cdf") {
-    t <- sort(unique(c(seq(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
+    t <- sort(unique(c(seq.int(xlim1[1], xlim1[2], length.out = pp1), jumps(x, xlim1))))
     val = p(x, t)
     if (only_mix) {
       df1 <- data.frame(tt = t, val = val, Distribution = factor(rep("Mix", each = length(t))))
@@ -1560,7 +1560,7 @@ plotgg.trans_compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000
         z
       })
       l2 <- round(l2, 12)
-      df1 <- data.frame(tt = rep(t, l), val = c(l2), Distribution = factor(rep(rev(lev), each = length(t)), levels = lev))
+      df1 <- data.frame(tt = rep.int(t, l), val = c(l2), Distribution = factor(rep(rev(lev), each = length(t)), levels = lev))
     }
     ggplot2::ggplot(df1) + ggplot2::geom_area(ggplot2::aes_string(x = "tt", y = "val", fill = "Distribution", color = "Distribution"), alpha = alpha1, size = size1) +
       mistr_theme(legend.position = legend.position1, ...) +
@@ -1568,11 +1568,11 @@ plotgg.trans_compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000
       ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE), color = ggplot2::guide_legend(reverse = TRUE)) +
       ggplot2::coord_cartesian(xlim = xlim1, ylim = ylim1)
   } else {
-    t <- sort(unique(c(seq(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
-    val = c(d(x, t), rep(0, sum(duplicated(x$breakpoints))))
+    t <- sort(unique(c(seq.int(xlim2[1], xlim2[2], length.out = pp2), jumps(x, xlim2))))
+    val = c(d(x, t), rep.int(0, sum(duplicated(x$breakpoints))))
     t <- c(t, breakp[duplicated(breakp)])
     dubl <- duplicated(breakp) | duplicated(breakp, fromLast = TRUE)
-    g2 <- paste(round(cumsum(g[-length(g)]) * 100, 2), "%", sep = "")
+    g2 <- paste0(round(cumsum(g[-length(g)]) * 100, 2), "%")
     br <- unique(breakp)
     g22 <- numeric(length(br))
     g22[table(breakp) == 1] <- g2[!dubl]

@@ -4,14 +4,14 @@
 \alias{autoplot.dist}
 \title{Autoplot of Distributions Using ggplot2}
 \usage{
-\method{autoplot}{dist}(x, which = "all", cols = 2, ...)
+autoplot.dist(x, which = "all", ncols = 2, ...)
 }
 \arguments{
 \item{x}{distribution object.}
 
 \item{which}{whether to plot only CDF, PDF or both, default: 'all'.}
 
-\item{cols}{in how many columns should the plots be merged, default: 2.}
+\item{ncols}{in how many columns should the plots be merged, default: 2.}
 
 \item{...}{further arguments to be passed.}
 }

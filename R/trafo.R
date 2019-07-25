@@ -259,11 +259,11 @@ trafo <- function(O, type = "new", trans, invtrans, print, deriv, operation, val
 
 trans_class <- function(O) UseMethod("trans_class")
 #' @export
-trans_class.standist <- function(O) c(paste("trans_", class(O)[2:4], sep = ""), "dist")
+trans_class.standist <- function(O) c(paste0("trans_", class(O)[2:4]), "dist")
 #' @export
-trans_class.mixdist <- function(O) c(paste("trans_", class(O)[1:3], sep = ""), "dist")
+trans_class.mixdist <- function(O) c(paste0("trans_", class(O)[1:3]), "dist")
 #' @export
-trans_class.compdist <- function(O) c(paste("trans_", class(O)[1:3], sep = ""), "dist")
+trans_class.compdist <- function(O) c(paste0("trans_", class(O)[1:3]), "dist")
 
 #' @title Transformation of a Distribution Object
 #' @description The methods for arithmetic operators \code{+, -, *, /, ^, log, exp, sqrt}, which perform
