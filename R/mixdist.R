@@ -208,7 +208,6 @@ q.mixdist <- function(O, p, lower.tail = TRUE, log.p = FALSE,...) {
 #' @param p vector of probabilities.
 #' @param lower.tail logical; if TRUE, probabilities are \eqn{P[X \le x]} otherwise, \eqn{P[X > x]}, default: TRUE.
 #' @param log.p logical; if TRUE, probabilities \eqn{p} are given as \eqn{log(p)}, default: FALSE.
-#' @param ... further arguments to be passed.
 #' @return Vector of computed results.
 #' @details Methods of \code{qlim} function evaluates the right-hand limit of a quantile function for any offered
 #'          distribution object from the package \code{\link{mistr}}. The right-hand limit

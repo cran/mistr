@@ -129,6 +129,44 @@ q.default <- function(O = save, p = status, lower.tail = runLast, log.p = FALSE,
   base::q(save = O, status = p, runLast = lower.tail)
 }
 
+#' @title Quantile Function Approximation
+#' @description \code{q_approxfun} is a generic function that for a given object generates function to approximate the quantile function.
+#' @param O distribution object.
+#' @param range interval on which the grid is defined, q(O, c(0.005, 0.995)).
+#' @param n number of points within the grid, default: 1000.
+#' @return Function.
+#' @details Function \code{q_approxfun} generates a grid of values on which the CDF of the object is evaluated.
+#'          The function returns a quantile function that uses \code{\link[stats]{approx}} and the values 
+#'          of the grid to approximate the quantiles. This function is designed mostly for the mixture distributions
+#'          where the standard \code{q} method may be slow and thus allows to trade the accuracy for the speed. 
+#'          
+#'          The returned function takes the arguments \code{p}, \code{lower.tail} and \code{log.p}, see \code{\link{q}}.
+#' @examples
+#' N <- normdist(1, 3)
+#' N2 <- normdist(8, 3)
+#'
+#' M <- mixdist(N, N2, weights = c(0.5, 0.5))
+#' q_app <- q_approxfun(M)
+#' 
+#' q_app(c(.2, .5, .7))
+#' q_app(c(.2, .5, .7), lower.tail = FALSE)
+#' @rdname q_approxfun
+#' @export
+q_approxfun <- function(O, range = q(O, c(0.005, 0.995)), n = 1000) UseMethod("q_approxfun")
+
+#' @rdname q_approxfun
+#' @export
+q_approxfun.dist <- function(O, range = q(O, c(0.005, 0.995)), n = 1000) {
+   y <- seq.int(from = range[1], to = range[2], length.out = n)
+   x <- p(O, y)
+   f <- approxfun(x = x, y = y, rule = 2)
+   function(p, lower.tail = TRUE, log.p = FALSE){
+      if (log.p) p <- exp(p)
+      if (!lower.tail) p <- 1 - p
+      approx(x = x, y = y, xout = p, rule = 2)$y
+   }
+}
+
 # q.default <- function(save = "default", status = 0, runLast = TRUE){
 #   base::q(save = save, status = status, runLast = runLast)
 # }

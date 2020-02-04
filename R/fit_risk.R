@@ -322,6 +322,8 @@ risk.PNP <- function(model, alpha = 0.05, expectile = TRUE, plot = FALSE, ggplot
     stop("alpha out of bounds")
   if (any(alpha > 1))
     alpha <- alpha/100
+  if (model$params$coeff["shape1"] <=1 || model$params$coeff["shape2"] <=1) 
+    warning("Not all components have finite expectation. ES and Exp can be infinite.")
   
   ES <- int_PNP(model, alpha)/alpha
   VaR <- q(distribution(model), alpha)
@@ -353,6 +355,8 @@ risk.GNG <- function(model, alpha = 0.05, expectile = TRUE, plot = FALSE, ggplot
     stop("alpha out of bounds")
   if (any(alpha > 1))
     alpha <- alpha/100
+  if (model$params$coeff["shape1"] >=1 || model$params$coeff["shape2"] >=1) 
+    warning("Not all components have finite expectation. ES and Exp can be infinite.")
   
   ES <- int_GNG(model, alpha)/alpha
   VaR <- q(distribution(model), alpha)

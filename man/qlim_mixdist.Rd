@@ -20,8 +20,6 @@
 \item{lower.tail}{logical; if TRUE, probabilities are \eqn{P[X \le x]} otherwise, \eqn{P[X > x]}, default: TRUE.}
 
 \item{log.p}{logical; if TRUE, probabilities \eqn{p} are given as \eqn{log(p)}, default: FALSE.}
-
-\item{...}{further arguments to be passed.}
 }
 \value{
 Vector of computed results.
