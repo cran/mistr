@@ -1,7 +1,7 @@
 Package: mistr
 Type: Package
 Title: Mixture and Composite Distributions
-Version: 0.0.3
+Version: 0.0.4
 Depends: R (>= 3.0.1)
 Authors@R: c(
     person("Lukas", "Sablica", email = "lsablica@wu.ac.at", role = c("aut", "cre"),
@@ -16,11 +16,11 @@ Imports: bbmle, stats, graphics, grDevices
 Suggests: ggplot2, grid, knitr, rmarkdown, pinp
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-02-04 10:18:45 UTC; sablica
+Packaged: 2020-11-23 14:54:17 UTC; sablica
 Author: Lukas Sablica [aut, cre] (<https://orcid.org/0000-0001-9166-4563>),
   Kurt Hornik [aut] (<https://orcid.org/0000-0003-4198-9911>)
 Repository: CRAN
-Date/Publication: 2020-02-04 10:40:02 UTC
+Date/Publication: 2020-11-23 16:10:02 UTC

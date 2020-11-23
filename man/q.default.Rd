@@ -4,8 +4,16 @@
 \alias{q.default}
 \title{Terminate an R Session}
 \usage{
-\method{q}{default}(O = save, p = status, lower.tail = runLast,
-  log.p = FALSE, save = "default", status = 0, runLast = TRUE, ...)
+\method{q}{default}(
+  O = save,
+  p = status,
+  lower.tail = runLast,
+  log.p = FALSE,
+  save = "default",
+  status = 0,
+  runLast = TRUE,
+  ...
+)
 }
 \arguments{
 \item{O}{place holder for generic, by default set to save, default: save.}

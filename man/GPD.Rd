@@ -10,11 +10,9 @@
 \usage{
 dGPD(x, loc = 0, scale = 1, shape = 0, log = FALSE)
 
-pGPD(q, loc = 0, scale = 1, shape = 0, lower.tail = TRUE,
-  log.p = FALSE)
+pGPD(q, loc = 0, scale = 1, shape = 0, lower.tail = TRUE, log.p = FALSE)
 
-qGPD(p, loc = 0, scale = 1, shape = 0, lower.tail = TRUE,
-  log.p = FALSE)
+qGPD(p, loc = 0, scale = 1, shape = 0, lower.tail = TRUE, log.p = FALSE)
 
 rGPD(n, loc = 0, scale = 1, shape = 0)
 }

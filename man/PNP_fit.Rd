@@ -4,8 +4,11 @@
 \alias{PNP_fit}
 \title{Fitting a Pareto-Normal-Pareto Model}
 \usage{
-PNP_fit(data, start = c(break1 = -0.02, break2 = 0.02, mean = 0, sd =
-  0.012), ...)
+PNP_fit(
+  data,
+  start = c(break1 = -0.02, break2 = 0.02, mean = 0, sd = 0.012),
+  ...
+)
 }
 \arguments{
 \item{data}{vector of values to which the density is optimized.}

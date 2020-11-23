@@ -4,8 +4,14 @@
 \alias{plot.comp_fit}
 \title{Autoplot of Fitted Distributions}
 \usage{
-\method{plot}{comp_fit}(x, which = "all", layout = matrix(c(1, 2, 1,
-  3), nrow = 2), empir_color = "#122e94", mtext_cex = sett, ...)
+\method{plot}{comp_fit}(
+  x,
+  which = "all",
+  layout = matrix(c(1, 2, 1, 3), nrow = 2),
+  empir_color = "#122e94",
+  mtext_cex = sett,
+  ...
+)
 }
 \arguments{
 \item{x}{distribution object.}

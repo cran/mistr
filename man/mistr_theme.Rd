@@ -4,8 +4,7 @@
 \alias{mistr_theme}
 \title{Mistr Theme for Ggplot}
 \usage{
-mistr_theme(grey = FALSE, blue = FALSE, legend.position = "right",
-  ...)
+mistr_theme(grey = FALSE, blue = FALSE, legend.position = "right", ...)
 }
 \arguments{
 \item{grey}{logical, if TRUE grey palette is used, default: FALSE.}

@@ -7,22 +7,54 @@
 \alias{QQnormgg}
 \title{Implementation of Quantile-Quantile Plot with ggplot2}
 \usage{
-QQplotgg(d1, d2, line = TRUE, col = "#F9D607", line_col = "#f28df9",
-  xlab = deparse(substitute(d1)), ylab, main = "Q-Q plot", alpha,
-  lwd = 1, ...)
+QQplotgg(
+  d1,
+  d2,
+  line = TRUE,
+  col = "#F9D607",
+  line_col = "#f28df9",
+  xlab = deparse(substitute(d1)),
+  ylab,
+  main = "Q-Q plot",
+  alpha,
+  lwd = 1,
+  ...
+)
 
-\method{QQplotgg}{default}(d1, d2, line = TRUE, col = "#F9D607",
-  line_col = "#f28df9", xlab = deparse(substitute(d1)),
-  ylab = deparse(substitute(d2)), main = "Q-Q plot", alpha = 0.5,
-  lwd = 1, ...)
+\method{QQplotgg}{default}(
+  d1,
+  d2,
+  line = TRUE,
+  col = "#F9D607",
+  line_col = "#f28df9",
+  xlab = deparse(substitute(d1)),
+  ylab = deparse(substitute(d2)),
+  main = "Q-Q plot",
+  alpha = 0.5,
+  lwd = 1,
+  ...
+)
 
-\method{QQplotgg}{dist}(d1, d2, line = TRUE, col = "#F9D607",
-  line_col = "#f28df9", xlab = deparse(substitute(d1)), ylab = ylabe,
-  main = "Q-Q plot", alpha = 0.7, lwd = 1, CI = re,
-  CI_alpha = 0.4, CI_col = line_col, conf = 0.95, n = 100, ...)
+\method{QQplotgg}{dist}(
+  d1,
+  d2,
+  line = TRUE,
+  col = "#F9D607",
+  line_col = "#f28df9",
+  xlab = deparse(substitute(d1)),
+  ylab = ylabe,
+  main = "Q-Q plot",
+  alpha = 0.7,
+  lwd = 1,
+  CI = re,
+  CI_alpha = 0.4,
+  CI_col = line_col,
+  conf = 0.95,
+  n = 100,
+  ...
+)
 
-QQnormgg(d2, xlab = "Standard Normal", ylab = deparse(substitute(d2)),
-  ...)
+QQnormgg(d2, xlab = "Standard Normal", ylab = deparse(substitute(d2)), ...)
 }
 \arguments{
 \item{d1}{distribution object or dataset.}

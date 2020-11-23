@@ -10,23 +10,17 @@
 \alias{summary.trans_compdist}
 \title{Displays a Useful Description of a Distribution Object}
 \usage{
-\method{summary}{standist}(object, level = 1, space = 2,
-  additional_list, truncation, ...)
+\method{summary}{standist}(object, level = 1, space = 2, additional_list, truncation, ...)
 
-\method{summary}{trans_standist}(object, level = 1, space = 2,
-  additional_list, truncation, ...)
+\method{summary}{trans_standist}(object, level = 1, space = 2, additional_list, truncation, ...)
 
-\method{summary}{mixdist}(object, level = 1, space = 2,
-  additional_list, truncation, ...)
+\method{summary}{mixdist}(object, level = 1, space = 2, additional_list, truncation, ...)
 
-\method{summary}{trans_mixdist}(object, level = 1, space = 2,
-  additional_list, truncation, ...)
+\method{summary}{trans_mixdist}(object, level = 1, space = 2, additional_list, truncation, ...)
 
-\method{summary}{compdist}(object, level = 1, space = 2,
-  additional_list, truncation, ...)
+\method{summary}{compdist}(object, level = 1, space = 2, additional_list, truncation, ...)
 
-\method{summary}{trans_compdist}(object, level = 1, space = 2,
-  additional_list, truncation, ...)
+\method{summary}{trans_compdist}(object, level = 1, space = 2, additional_list, truncation, ...)
 }
 \arguments{
 \item{object}{distribution object to summarize.}

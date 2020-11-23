@@ -4,9 +4,14 @@
 \alias{GNG_fit}
 \title{Fitting a GPD-Normal-GPD Model}
 \usage{
-GNG_fit(data, start = c(break1 = -0.02, break2 = 0.02, mean = 0, sd =
-  0.0115, shape1 = 0.15, shape2 = 0.15), break_fix = FALSE,
-  midd = mean(data), ...)
+GNG_fit(
+  data,
+  start = c(break1 = -0.02, break2 = 0.02, mean = 0, sd = 0.0115, shape1 = 0.15, shape2
+    = 0.15),
+  break_fix = FALSE,
+  midd = mean(data),
+  ...
+)
 }
 \arguments{
 \item{data}{vector of values to which the density is optimized.}

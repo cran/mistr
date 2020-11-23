@@ -4,8 +4,14 @@
 \alias{autoplot.comp_fit}
 \title{Autoplot of Fitted Distributions Using ggplot2}
 \usage{
-autoplot.comp_fit(x, which = "all", layout = matrix(c(1, 2, 1, 3), nrow
-  = 2), empir_color = "#F9D607", empir_alpha = 0.4, ...)
+autoplot.comp_fit(
+  x,
+  which = "all",
+  layout = matrix(c(1, 2, 1, 3), nrow = 2),
+  empir_color = "#F9D607",
+  empir_alpha = 0.4,
+  ...
+)
 }
 \arguments{
 \item{x}{distribution object.}

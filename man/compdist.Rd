@@ -8,11 +8,9 @@
 \usage{
 compdist(..., weights, breakpoints, break.spec, all.left = FALSE)
 
-\method{compdist}{dist}(..., weights, breakpoints, break.spec,
-  all.left = FALSE)
+\method{compdist}{dist}(..., weights, breakpoints, break.spec, all.left = FALSE)
 
-\method{compdist}{default}(dist, params, weights, breakpoints, break.spec,
-  all.left = FALSE, ...)
+\method{compdist}{default}(dist, params, weights, breakpoints, break.spec, all.left = FALSE, ...)
 }
 \arguments{
 \item{...}{distribution objects.}

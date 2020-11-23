@@ -6,14 +6,35 @@
 \alias{risk.GNG}
 \title{Risk Measures of Fitted Objects}
 \usage{
-risk(model, alpha, expectile = TRUE, plot = FALSE, ggplot = FALSE,
-  text_ylim = -0.15, size = 1)
+risk(
+  model,
+  alpha,
+  expectile = TRUE,
+  plot = FALSE,
+  ggplot = FALSE,
+  text_ylim = -0.15,
+  size = 1
+)
 
-\method{risk}{PNP}(model, alpha = 0.05, expectile = TRUE,
-  plot = FALSE, ggplot = FALSE, text_ylim = -0.15, size = 1)
+\method{risk}{PNP}(
+  model,
+  alpha = 0.05,
+  expectile = TRUE,
+  plot = FALSE,
+  ggplot = FALSE,
+  text_ylim = -0.15,
+  size = 1
+)
 
-\method{risk}{GNG}(model, alpha = 0.05, expectile = TRUE,
-  plot = FALSE, ggplot = FALSE, text_ylim = -0.15, size = 1)
+\method{risk}{GNG}(
+  model,
+  alpha = 0.05,
+  expectile = TRUE,
+  plot = FALSE,
+  ggplot = FALSE,
+  text_ylim = -0.15,
+  size = 1
+)
 }
 \arguments{
 \item{model}{output object of \code{GNG_fit()} or \code{PNP_fit()}.}

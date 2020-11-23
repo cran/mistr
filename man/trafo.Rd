@@ -4,8 +4,7 @@
 \alias{trafo}
 \title{Modifications of Transformations}
 \usage{
-trafo(O, type = "new", trans, invtrans, print, deriv, operation,
-  value = 0)
+trafo(O, type = "new", trans, invtrans, print, deriv, operation, value = 0)
 }
 \arguments{
 \item{O}{distribution object.}

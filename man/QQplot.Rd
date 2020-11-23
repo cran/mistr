@@ -7,21 +7,50 @@
 \alias{QQnorm}
 \title{Quantile-Quantile Plot}
 \usage{
-QQplot(d1, d2, line = TRUE, col = "#122e94", line_col = "#f28df9",
-  xlab = deparse(substitute(d1)), ylab, main = "Q-Q plot", lwd = 2,
-  ...)
+QQplot(
+  d1,
+  d2,
+  line = TRUE,
+  col = "#122e94",
+  line_col = "#f28df9",
+  xlab = deparse(substitute(d1)),
+  ylab,
+  main = "Q-Q plot",
+  lwd = 2,
+  ...
+)
 
-\method{QQplot}{default}(d1, d2, line = TRUE, col = "#122e94",
-  line_col = "#f28df9", xlab = deparse(substitute(d1)),
-  ylab = deparse(substitute(d2)), main = "Q-Q plot", lwd = 2, ...)
+\method{QQplot}{default}(
+  d1,
+  d2,
+  line = TRUE,
+  col = "#122e94",
+  line_col = "#f28df9",
+  xlab = deparse(substitute(d1)),
+  ylab = deparse(substitute(d2)),
+  main = "Q-Q plot",
+  lwd = 2,
+  ...
+)
 
-\method{QQplot}{dist}(d1, d2, line = TRUE, col = "#122e94",
-  line_col = "#f28df9", xlab = deparse(substitute(d1)), ylab = ylabe,
-  main = "Q-Q plot", lwd = 2, CI = re, conf = 0.95, n = 100,
-  CI_col = "grey80", ...)
+\method{QQplot}{dist}(
+  d1,
+  d2,
+  line = TRUE,
+  col = "#122e94",
+  line_col = "#f28df9",
+  xlab = deparse(substitute(d1)),
+  ylab = ylabe,
+  main = "Q-Q plot",
+  lwd = 2,
+  CI = re,
+  conf = 0.95,
+  n = 100,
+  CI_col = "grey80",
+  ...
+)
 
-QQnorm(d2, xlab = "Standard Normal", ylab = deparse(substitute(d2)),
-  ...)
+QQnorm(d2, xlab = "Standard Normal", ylab = deparse(substitute(d2)), ...)
 }
 \arguments{
 \item{d1}{distribution object or dataset.}

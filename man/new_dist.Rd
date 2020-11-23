@@ -4,10 +4,15 @@
 \alias{new_dist}
 \title{Creates New Distribution Object}
 \usage{
-new_dist(name, from, to, by = NULL,
-  parameters = mget(names(eval(quote(match.call()), parent)[-1]),
-  parent), class = deparse(sys.calls()[[sys.nframe() - 1]][[1]]),
-  parent = parent.frame())
+new_dist(
+  name,
+  from,
+  to,
+  by = NULL,
+  parameters = mget(names(eval(quote(match.call()), parent)[-1]), parent),
+  class = deparse(sys.calls()[[sys.nframe() - 1]][[1]]),
+  parent = parent.frame()
+)
 }
 \arguments{
 \item{name}{string containing the name of the distribution.}
