@@ -13,7 +13,7 @@
   \item{DJI}{Dow Jones Industrial Average}
 }}
 \source{
-\code{\link[quantmod]{quantmod}}
+Package: quantmod
 }
 \usage{
 stocks

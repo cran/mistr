@@ -9,5 +9,5 @@
 #'   \item{GSPC}{S&P 500}
 #'   \item{DJI}{Dow Jones Industrial Average}
 #' }
-#' @source \code{\link[quantmod]{quantmod}}
+#' @source Package: quantmod
 "stocks"

@@ -1,3 +1,11 @@
+# mistr 0.0.5
+
+## Minor improvements and fixes
+
+* corrected ylab1 argument, now using plotmath  
+
+* removing direct linking to quantmod in help files
+
 # mistr 0.0.4
 
 ## Minor improvements and fixes

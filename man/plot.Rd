@@ -18,75 +18,75 @@
 \usage{
 \method{plot}{compdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = 1, lty2 = 1, lwd1 = 2, lwd2 = 2, lty_abline = 3, mtext_cex = 1, ...)
 
 \method{plot}{trans_compdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = 1, lty2 = 1, lwd1 = 2, lwd2 = 2, lty_abline = 3, mtext_cex = 1, ...)
 
 \method{plot}{contdist}(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 
 \method{plot}{trans_contdist}(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 
 \method{plot}{discrdist}(x, which = "all", col = "#122e94",
         xlim1 = q(x,c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PMF", type1 = NULL, type2 = NULL,
         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 
 \method{plot}{trans_discrdist}(x, which = "all", col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PMF", type1 = "p", type2 = "p",
         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 
 \method{plot}{contmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 
 \method{plot}{trans_contmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 
 \method{plot}{discrmixdist}(x, which = "all", only_mix = FALSE,
         pp1 = 1000, pp2 = 2 * (diff(xlim2)), col = "#122e94",
         xlim1 = q(x,c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PMF", type1 = "l", type2 = "l",
         lty1 = 3, lty2 = 3, lwd1 = 3, lwd2 = 3, ...)
 
 \method{plot}{trans_discrmixdist}(x, which = "all", only_mix = FALSE,
         pp1 = 1000, pp2 = 2 * (diff(xlim2)), col = "#122e94",
         xlim1 = q(x,c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PMF", type1 = "l", type2 = "l",
         lty1 = 3, lty2 = 3, lwd1 = 3, lwd2 = 3, ...)
 
 \method{plot}{contdiscrmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 
 \method{plot}{trans_contdiscrmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
         xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 }
@@ -113,7 +113,7 @@
 
 \item{xlab1}{xlab of CDF plot, default: 'x'.}
 
-\item{ylab1}{ylab of CDF plot, default: 'P(X <U+2264> x)'.}
+\item{ylab1}{ylab of CDF plot, default: expression(P(X <= x)).}
 
 \item{xlab2}{xlab of PDF plot, default: 'x'.}
 

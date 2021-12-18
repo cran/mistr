@@ -117,7 +117,7 @@ jumps.trans_compdist <- function(O, interval) {
 #' @param xlim2 xlim of PDF plot, default: xlim1.
 #' @param ylim2 ylim of PDF plot, default: NULL.
 #' @param xlab1 xlab of CDF plot, default: 'x'.
-#' @param ylab1 ylab of CDF plot, default: 'P(X <U+2264> x)'.
+#' @param ylab1 ylab of CDF plot, default: expression(P(X <= x)).
 #' @param xlab2 xlab of PDF plot, default: 'x'.
 #' @param ylab2 ylab of PDF plot, default: 'P(X = x)'.
 #' @param main1 title of CDF plot, default: 'CDF'.
@@ -148,13 +148,13 @@ NULL
 #' @rdname plot
 #' @usage \method{plot}{compdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = 1, lty2 = 1, lwd1 = 2, lwd2 = 2, lty_abline = 3, mtext_cex = 1, ...)
 #' @export
 plot.compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
                           xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-                          xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
+                          xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
                           type1 = "l", type2 = "l", lty1 = 1, lty2 = 1, lwd1 = 2, lwd2 = 2, lty_abline = 3, mtext_cex = 1, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -228,13 +228,13 @@ plot.compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 
 #' @rdname plot
 #' @usage \method{plot}{trans_compdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = 1, lty2 = 1, lwd1 = 2, lwd2 = 2, lty_abline = 3, mtext_cex = 1, ...)
 #' @export
 plot.trans_compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
                                 xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-                                xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
+                                xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
                                 type1 = "l", type2 = "l", lty1 = 1, lty2 = 1, lwd1 = 2, lwd2 = 2, lty_abline = 3, mtext_cex = 1, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -317,12 +317,12 @@ plot.trans_compdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, 
 #' @rdname plot
 #' @usage \method{plot}{contdist}(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 #' @export
 plot.contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e94", xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL,
-                          xlim2 = xlim1, ylim2 = NULL, xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
+                          xlim2 = xlim1, ylim2 = NULL, xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
                           type1 = "l", type2 = "l", lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim1")
@@ -349,12 +349,12 @@ plot.contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e
 #' @rdname plot
 #' @usage \method{plot}{trans_contdist}(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 #' @export
 plot.trans_contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = "#122e94", xlim1 = q(x, c(0.01, 0.99)),
-                                ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL, xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF",
+                                ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL, xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF",
                                 main2 = "PDF", type1 = "l", type2 = "l", lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim1")
@@ -381,12 +381,12 @@ plot.trans_contdist <- function(x, which = "all", pp1 = 1000, pp2 = 1000, col = 
 #' @rdname plot
 #' @usage \method{plot}{discrdist}(x, which = "all", col = "#122e94",
 #'         xlim1 = q(x,c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PMF", type1 = NULL, type2 = NULL,
 #'         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 #' @export
 plot.discrdist <- function(x, which = "all", col = "#122e94", xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-                           xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PMF", type1 = NULL, type2 = NULL,
+                           xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PMF", type1 = NULL, type2 = NULL,
                            lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -419,12 +419,12 @@ plot.discrdist <- function(x, which = "all", col = "#122e94", xlim1 = q(x, c(0.0
 #' @rdname plot
 #' @usage \method{plot}{trans_discrdist}(x, which = "all", col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PMF", type1 = "p", type2 = "p",
 #'         lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...)
 #' @export
 plot.trans_discrdist <- function(x, which = "all", col = "#122e94", xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1,
-                                 ylim2 = NULL, xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PMF", type1 = "p",
+                                 ylim2 = NULL, xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PMF", type1 = "p",
                                  type2 = "p", lty1 = NULL, lty2 = NULL, lwd1 = NULL, lwd2 = NULL, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -460,13 +460,13 @@ plot.trans_discrdist <- function(x, which = "all", col = "#122e94", xlim1 = q(x,
 #' @rdname plot
 #' @usage \method{plot}{contmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 #' @export
 plot.contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
                              xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-                             xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
+                             xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
                              type1 = "l", type2 = "l", lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -516,13 +516,13 @@ plot.contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2
 #' @rdname plot
 #' @usage \method{plot}{trans_contmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 #' @export
 plot.trans_contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
                                    xlim1 = q(x, c(0.01, 0.99)), ylim1 = NULL, xlim2 = xlim1, ylim2 = NULL,
-                                   xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
+                                   xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
                                    type1 = "l", type2 = "l", lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -574,13 +574,13 @@ plot.trans_contmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 100
 #' @usage \method{plot}{discrmixdist}(x, which = "all", only_mix = FALSE,
 #'         pp1 = 1000, pp2 = 2 * (diff(xlim2)), col = "#122e94",
 #'         xlim1 = q(x,c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PMF", type1 = "l", type2 = "l",
 #'         lty1 = 3, lty2 = 3, lwd1 = 3, lwd2 = 3, ...)
 #' @export
 plot.discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 2 * (diff(xlim2)), col = "#122e94",
                               xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-                              xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",main1 = "CDF", main2 = "PMF",
+                              xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",main1 = "CDF", main2 = "PMF",
                               type1 = "l", type2 = "l", lty1 = 3, lty2 = 3, lwd1 = 3, lwd2 = 3, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -632,13 +632,13 @@ plot.discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp
 #' @usage \method{plot}{trans_discrmixdist}(x, which = "all", only_mix = FALSE,
 #'         pp1 = 1000, pp2 = 2 * (diff(xlim2)), col = "#122e94",
 #'         xlim1 = q(x,c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PMF", type1 = "l", type2 = "l",
 #'         lty1 = 3, lty2 = 3, lwd1 = 3, lwd2 = 3, ...)
 #' @export
 plot.trans_discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 2 * (diff(xlim2)), col = "#122e94",
                                     xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-                                    xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PMF",
+                                    xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PMF",
                                     type1 = "l", type2 = "l", lty1 = 3, lty2 = 3, lwd1 = 3, lwd2 = 3, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -690,13 +690,13 @@ plot.trans_discrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 10
 #' @rdname plot
 #' @usage \method{plot}{contdiscrmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 #' @export
 plot.contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
                                   xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-                                  xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
+                                  xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
                                   type1 = "l", type2 = "l", lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
@@ -749,13 +749,13 @@ plot.contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000
 #' @rdname plot
 #' @usage \method{plot}{trans_contdiscrmixdist}(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
 #'         xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-#'         xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)",
+#'         xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)",
 #'         main1 = "CDF", main2 = "PDF", type1 = "l", type2 = "l",
 #'         lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...)
 #' @export
 plot.trans_contdiscrmixdist <- function(x, which = "all", only_mix = FALSE, pp1 = 1000, pp2 = 1000, col = "#122e94",
                                         xlim1 = q(x, c(0.01, 0.99)), ylim1 = c(0, 1), xlim2 = xlim1, ylim2 = NULL,
-                                        xlab1 = "x", ylab1 = "P(X \u2264 x)", xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
+                                        xlab1 = "x", ylab1 = expression(P(X <= x)), xlab2 = "x", ylab2 = "P(X = x)", main1 = "CDF", main2 = "PDF",
                                         type1 = "l", type2 = "l", lty1 = 3, lty2 = 3, lwd1 = 2, lwd2 = 2, ...) {
   if (any(is.infinite(xlim1)))
     stop("please select xlim")
