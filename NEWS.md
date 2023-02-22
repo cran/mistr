@@ -1,3 +1,9 @@
+# mistr 0.0.6
+
+## Minor improvements and fixes
+
+* tweaked citation
+
 # mistr 0.0.5
 
 ## Minor improvements and fixes

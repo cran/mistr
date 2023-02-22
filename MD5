@@ -1,6 +1,6 @@
-128950617ea4bd64d6864029c3f76b1f *DESCRIPTION
+e5ab398b6a7436b1266c4029194bdfb5 *DESCRIPTION
 d2e7d168eb2d95e5a347970f5980ccd1 *NAMESPACE
-64cdb792d4aeacae9e4ca36a0c090d5a *NEWS.md
+00f7dcf8b3564ecc0a4f3e173320e630 *NEWS.md
 061870794f15f5e24550cc4532260455 *R/compdist.R
 9ddccb9a375c05f00590af0f9abe3064 *R/creators.R
 af60a4eebe4c1cf351c79621e054da3d *R/data.R
@@ -12,15 +12,15 @@ cfde43e91e963b99a9b08eb3e61e3841 *R/mixdist.R
 6bd566c3a9689d06fcd1f0ca8a13c267 *R/trafo.R
 7d70a7231181e32a5089428797306bf9 *R/trans_standist.R
 429a249ab41ef590c00478434dc1b3d6 *R/utilities.R
-3a7a38ff00bb5f5db0ad5780b98375ab *build/vignette.rds
+1e67449a25ee958a91c0781680b65f4c *build/vignette.rds
 8d1565c87b52ede8ce3e45ad09238486 *data/stocks.rda
-da07b9a11042bfd8b02d2695b5873435 *inst/CITATION
+0543f3a89238d86968800349bad8a19f *inst/CITATION
 4b8616fd66cbb3dcd1a53be2fa3b937b *inst/doc/mistr-extensions.R
 4a2649a263c4a3342ac3e58c37a4250f *inst/doc/mistr-extensions.Rmd
-4c3aaeb427623a27a5056af750d0ffb5 *inst/doc/mistr-extensions.pdf
+f06a60dda55543f8041189a75cae7fe4 *inst/doc/mistr-extensions.pdf
 68976d5077620259bf282948c8b4bce9 *inst/doc/mistr-introduction.R
 5eccc992bffbbde08edb6b29b375d517 *inst/doc/mistr-introduction.Rmd
-feb49f5405c40168bb8a1083fdc012c7 *inst/doc/mistr-introduction.pdf
+ecace1678df9365fb5b19e474be59d10 *inst/doc/mistr-introduction.pdf
 c706c11e2c3036c4aa473a1d1f598206 *man/Burr.Rd
 8997853c9824813bf96e31d1462bb3d2 *man/Frechet.Rd
 87ea4a4461a2fd9390f252ccd74fa151 *man/GNG_fit.Rd
@@ -87,7 +87,7 @@ b9e2580e0910c86aac4b38f32bbff5b7 *man/q_mixdist.Rd
 8668fa9f7e865221c3ac840a31851e10 *man/r.Rd
 0d52eedc3d840928a21244d6f384c3e8 *man/risk.Rd
 1034512c35c94a0cf6bed948b90bb623 *man/set_opt.Rd
-655d56ad753f86c2409f6c9aeded48cd *man/stocks.Rd
+bd2ea40a852bf7d7df0901744eee3d03 *man/stocks.Rd
 9e14bba8aefbf1084c78acdab818b0b0 *man/sudo_support.Rd
 c3f8cb7a9cdf5db38d82247aa5d33de1 *man/summary.Rd
 93f1fd22f06cea6a331a9c16838665f2 *man/summary_comp_fit.Rd
